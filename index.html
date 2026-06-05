@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        font-family:system-ui, -apple-system, sans-serif;
+    }
+    main{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+    }
+    button{
+        padding: .5rem 1rem;
+        background-color: white;
+        border: 2px solid;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all .5s;
+        width: 100%;
+    }
+    button:hover{
+        background-color: black;
+        color: white;
+    }
+    h1,h2,h3{
+        text-align: center;
+    }
+    h1{
+        font-size: 33px;
+    }
+    h3{
+        font-size: 26px;
+    }
+    .img{
+       object-fit: cover;
+       margin: .5rem;
+    }
+    .randomMichis{
+        text-align: center;
+    }
+    .randomImg {
+        width: 300px;
+        height: 300px;
+        border-radius: 15px;
+        background-size: cover;
+        background-position: center;
+    }
+    #savedMichis{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .error{
+        text-align: center;
+        color: brown;
+    }
+    #confirmation-message{
+        position: fixed;
+        text-align: center;
+        padding: .5rem;
+        display: block;
+        margin: 1rem 1rem;
+        top: 0;
+        right: -1000px;
+        opacity: 0;
+        color: white;
+        border-radius: 3px;
+        transition: all .5s;
+        z-index: 999;
+        max-width: 360px;
+       
+    }
+    #confirmation-message.success{
+        background-color: #20aa20;
+    }
+    #confirmation-message.error{
+        background-color: #ce1212;
+    }
+    #confirmation-message.info{
+        background-color: #ebbd12;
+    }
+    #confirmation-message.show{
+        opacity: 1;
+        right: 0;
+    }
+    .card-michi{
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    .card-michi button{
+        position: absolute;
+        bottom: 0;
+        width: fit-content;
+        padding: .2rem;
+        font-size: 12px;
+        border: 1px solid;
+        border-radius: 3px;
+    }
+</style>
+
+<body>
+    <main>
+        <span id="confirmation-message">Message</span>
+        <section>
+            <div>
+                <h1>Michis Random:</h1>
+                <div id="randomMichis" class="randomMichis"></div>
+                
+                <br/>
+                <button onclick="loadRandomMichis()">Quiero Otro Michi</button>
+                
+                </div>
+        </section>
+
+        <section id="uploadingMichi">
+            <h3>Sube la foto de tu michi</h3>
+            <form id="uploadingForm">
+                <input type="file" name="file" id="file">
+                <button type="button" onclick="uploadMichi()">Subir foto de Michi</button>
+            </form>
+        </section>
+        
+        <section>
+            <div>
+                <h3>Michis Favoritos</h3>
+                <div id="savedMichis"></div>
+            </div>
+        </section>
+        
+        
+
+       
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./mainaxios.js"></script>
+</body>
+
+</html>
